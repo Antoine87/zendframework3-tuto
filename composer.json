@@ -33,7 +33,8 @@
     "autoload": {
         "psr-4": {
             "Album\\": "module/Album/src/",
-            "Application\\": "module/Application/src/"
+            "Application\\": "module/Application/src/",
+            "Blog\\": "module/Blog/src/"
         }
     },
     "autoload-dev": {
