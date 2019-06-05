@@ -29,6 +29,7 @@
     },
     "autoload": {
         "psr-4": {
+            "Album\\": "module/Album/src/",
             "Application\\": "module/Application/src/"
         }
     },
