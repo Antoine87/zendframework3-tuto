@@ -25,7 +25,8 @@
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.4",
         "symfony/var-dumper": "^4.3",
-        "zendframework/zend-developer-tools": "^1.2"
+        "zendframework/zend-developer-tools": "^1.2",
+        "zendframework/zend-test": "^3.2"
     },
     "autoload": {
         "psr-4": {
@@ -35,6 +36,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "AlbumTest\\": "module/Album/test/",
             "ApplicationTest\\": "module/Application/test/"
         }
     },
