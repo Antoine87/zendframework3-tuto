@@ -93,4 +93,13 @@ class Album implements InputFilterAwareInterface
         $this->inputFilter = $inputFilter;
         return $this->inputFilter;
     }
+
+    public function getArrayCopy()
+    {
+        return [
+            'id'     => $this->id,
+            'artist' => $this->artist,
+            'title'  => $this->title,
+        ];
+    }
 }
