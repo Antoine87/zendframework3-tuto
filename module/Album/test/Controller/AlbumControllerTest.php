@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace AlbumTest\Controller;
 
 use Album\Controller\AlbumController;
+use Album\Model\Album;
 use Album\Model\AlbumTable;
+use Prophecy\Argument;
 use Zend\ServiceManager\ServiceManager;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
@@ -44,6 +46,22 @@ class AlbumControllerTest extends AbstractHttpControllerTestCase
         $this->assertControllerName(AlbumController::class);
         $this->assertControllerClass('AlbumController');
         $this->assertMatchedRouteName('album');
+    }
+
+    public function testAddActionRedirectsAfterValidPost()
+    {
+        $this->albumTable
+            ->saveAlbum(Argument::type(Album::class))
+            ->shouldBeCalled();
+
+        $postData = [
+            'title'  => 'Led Zeppelin III',
+            'artist' => 'Led Zeppelin',
+            'id'     => '',
+        ];
+        $this->dispatch('/album/add', 'POST', $postData);
+        $this->assertResponseStatusCode(302);
+        $this->assertRedirectTo('/album');
     }
 
     protected function configureServiceManager(ServiceManager $services)
