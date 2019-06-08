@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Blog;
 
 use Zend\Router\Http\Literal;
+use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
@@ -39,6 +40,21 @@ return [
                     'defaults' => [
                         'controller' => Controller\ListController::class,
                         'action'     => 'index',
+                    ],
+                ],
+                'may_terminate' => true,
+                'child_routes'  => [
+                    'detail' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route'    => '/:id',
+                            'defaults' => [
+                                'action' => 'detail',
+                            ],
+                            'constraints' => [
+                                'id' => '[1-9]\d*',
+                            ],
+                        ],
                     ],
                 ],
             ],
