@@ -19,11 +19,6 @@ class PostForm extends Form
         ]);
 
         $this->add([
-            'name' => 'post',
-            'type' => PostFieldset::class,
-        ]);
-
-        $this->add([
             'type' => 'submit',
             'name' => 'submit',
             'attributes' => [
